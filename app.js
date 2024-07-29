@@ -4,7 +4,6 @@ var mongoose = require("mongoose");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
-const { format } = require("date-fns");
 
 // 1st party dependencies
 var configData = require("./config/connection");
@@ -31,7 +30,7 @@ async function getApp() {
   app.use(cookieParser());
   app.use(express.static(path.join(__dirname, "public")));
 
-  app.locals.format = format;
+
 
   app.use("/", indexRouter);
   app.use("/js", express.static(__dirname + "/node_modules/bootstrap/dist/js")); // redirect bootstrap JS
